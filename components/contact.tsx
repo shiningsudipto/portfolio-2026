@@ -171,12 +171,6 @@ export const Contact = () => {
           </button>
         </motion.form>
       </div>
-
-      <div className="mt-24 text-center border-t border-white/5 pt-8">
-        <p className="text-[#94A3B8] text-sm">
-          Designed & Built dynamically by DevStudio © {new Date().getFullYear()}
-        </p>
-      </div>
     </section>
   );
 };

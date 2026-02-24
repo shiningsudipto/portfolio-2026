@@ -31,24 +31,34 @@ export const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-[#090D14]/70 border-b border-white/5">
-      <Link href="/">
+      <button
+        onClick={() => {
+          const lenis = (window as any).lenis;
+          if (lenis) lenis.scrollTo(0);
+        }}
+        className="text-xl font-bold text-[#F8FAFC] tracking-tighter cursor-pointer group"
+      >
         <motion.div
           whileHover={{ textShadow: "0px 0px 8px rgba(20, 184, 166, 0.8)" }}
-          className="text-xl font-bold text-[#F8FAFC] tracking-tighter cursor-pointer"
         >
           Dev<span className="text-[#14B8A6]">Studio</span>
         </motion.div>
-      </Link>
+      </button>
 
       <ul className="hidden md:flex space-x-8">
         {navItems.map((item) => (
           <li key={item.name}>
-            <Link
-              href={item.href}
-              className="text-[#94A3B8] hover:text-[#F8FAFC] transition-colors text-sm font-medium"
+            <button
+              onClick={() => {
+                const lenis = (window as any).lenis;
+                if (lenis) {
+                  lenis.scrollTo(item.href);
+                }
+              }}
+              className="text-[#94A3B8] hover:text-[#F8FAFC] transition-colors text-sm font-medium cursor-pointer"
             >
               {item.name}
-            </Link>
+            </button>
           </li>
         ))}
       </ul>

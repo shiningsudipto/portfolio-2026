@@ -66,13 +66,16 @@ export const Hero = () => {
           variants={childVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <a
-            href="#projects"
-            className="group flex items-center gap-2 bg-[#F8FAFC] text-[#090D14] px-8 py-3 rounded-full font-semibold hover:bg-white transition-all transform hover:scale-105 active:scale-95"
+          <button
+            onClick={() => {
+              const lenis = (window as any).lenis;
+              if (lenis) lenis.scrollTo("#projects");
+            }}
+            className="group flex items-center gap-2 bg-[#F8FAFC] text-[#090D14] px-8 py-3 rounded-full font-semibold hover:bg-white transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
           >
             Explore My Work
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/shiningsudipto"
@@ -94,6 +97,28 @@ export const Hero = () => {
         </motion.div>
       </motion.div>
 
+      {/* Background Animated Gradients */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-linear-to-bl from-[#14B8A6] to-[#8B5CF6] rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.1, 0.15, 0.1],
+            x: [0, 100, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-linear-to-tr from-[#8B5CF6] to-[#090D14] rounded-full blur-[100px]"
+        />
+      </div>
+
       {/* Floating 3D/Abstract element backdrop */}
       <motion.div
         animate={{
@@ -102,7 +127,7 @@ export const Hero = () => {
           rotateY: [0, -15, 15, 0],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full border-dashed opacity-20 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full border-dashed opacity-20 pointer-events-none z-0"
       />
       <motion.div
         animate={{
@@ -111,8 +136,35 @@ export const Hero = () => {
           rotateY: [0, 15, -15, 0],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#14B8A6]/20 rounded-full opacity-30 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#14B8A6]/20 rounded-full opacity-30 pointer-events-none z-0"
       />
+
+      {/* Floating particles/nodes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full pointer-events-none z-0 border border-white/20 bg-white/5"
+            style={{
+              width: Math.random() * 40 + 10 + "px",
+              height: Math.random() * 40 + 10 + "px",
+              left: Math.random() * 100 + "%",
+              top: Math.random() * 100 + "%",
+            }}
+            animate={{
+              y: [0, Math.random() * -200 - 50],
+              x: [0, Math.random() * 100 - 50],
+              opacity: [0, Math.random() * 0.3 + 0.1, 0],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
     </section>
   );
 };
