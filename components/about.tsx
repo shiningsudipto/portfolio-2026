@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const About = () => {
   return (
@@ -16,9 +17,9 @@ export const About = () => {
         className="mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-          About <span className="text-[#14B8A6]">Me</span>
+          About <span className="text-primary">Me</span>
         </h2>
-        <div className="w-20 h-1 bg-[#14B8A6] rounded-full mb-8" />
+        <div className="w-20 h-1 bg-primary rounded-full mb-8" />
       </motion.div>
 
       <div className="flex flex-col md:flex-row gap-12">
@@ -31,15 +32,17 @@ export const About = () => {
           className="w-full md:w-5/12 aspect-[4/5] relative rounded-2xl overflow-hidden group border border-white/10 bg-white/5"
         >
           {/* Decorative frame elements */}
-          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-[#14B8A6] z-20 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-[#8B5CF6] z-20 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
+          <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary z-20 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+          <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-secondary z-20 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
 
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#090D14]/80 to-transparent z-10" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/api/placeholder/400/500" // using placeholder, should be replaced with real image
+          <div className="absolute inset-0 md:bg-gradient-to-tr md:from-[#090D14]/50 to-transparent z-10" />
+          <Image
+            src="/sudipta-das, shiningsudipta, sit-1.png" // using placeholder, should be replaced with real image
             alt="Portrait placeholder"
-            className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-out transform group-hover:scale-105"
+            width={500}
+            height={500}
+            quality={100}
+            className="w-full h-full object-cover md:filter md:grayscale md:group-hover:grayscale-0 md:transition-all md:duration-700 md:ease-out md:transform md:group-hover:scale-105"
           />
         </motion.div>
 
@@ -83,7 +86,9 @@ export const About = () => {
               <span className="block text-[#F8FAFC] font-semibold text-xl mb-1">
                 Interest
               </span>
-              <span className="text-sm font-mono">System Design, UI/UX</span>
+              <span className="text-sm font-mono">
+                System Design & Building
+              </span>
             </div>
           </div>
         </motion.div>

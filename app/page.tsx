@@ -11,7 +11,7 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen text-[#F8FAFC] selection:bg-[#14B8A6]/30 font-sans overflow-x-hidden">
+    <main className="relative min-h-screen text-[#F8FAFC] selection:bg-primary/30 font-sans overflow-x-hidden">
       <BackgroundEffects />
       <Navbar />
 

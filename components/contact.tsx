@@ -32,7 +32,7 @@ export const Contact = () => {
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-          Let&apos;s <span className="text-[#14B8A6]">Connect</span>
+          Let&apos;s <span className="text-primary">Connect</span>
         </h2>
         <p className="text-[#94A3B8] max-w-lg mx-auto text-lg">
           Currently open for new opportunities. Let&apos;s build something
@@ -44,14 +44,14 @@ export const Contact = () => {
         {/* Direct Contact Info */}
         <div className="md:col-span-2 space-y-8 flex flex-col justify-center text-[#94A3B8]">
           <div className="flex items-center gap-4 group">
-            <div className="p-4 bg-white/5 border border-white/10 rounded-xl group-hover:border-[#14B8A6]/50 group-hover:bg-[#14B8A6]/10 transition-colors">
-              <Mail className="w-6 h-6 text-[#14B8A6]" />
+            <div className="p-4 bg-white/5 border border-white/10 rounded-xl group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+              <Mail className="w-6 h-6 text-primary" />
             </div>
             <div>
               <p className="text-sm font-medium text-[#F8FAFC]">Email</p>
               <a
                 href="mailto:shiningsudipto@gmail.com"
-                className="hover:text-[#14B8A6] transition-colors"
+                className="hover:text-primary transition-colors"
               >
                 shiningsudipto@gmail.com
               </a>
@@ -59,14 +59,14 @@ export const Contact = () => {
           </div>
 
           <div className="flex items-center gap-4 group">
-            <div className="p-4 bg-white/5 border border-white/10 rounded-xl group-hover:border-[#8B5CF6]/50 group-hover:bg-[#8B5CF6]/10 transition-colors">
-              <Phone className="w-6 h-6 text-[#8B5CF6]" />
+            <div className="p-4 bg-white/5 border border-white/10 rounded-xl group-hover:border-secondary/50 group-hover:bg-secondary/10 transition-colors">
+              <Phone className="w-6 h-6 text-secondary" />
             </div>
             <div>
               <p className="text-sm font-medium text-[#F8FAFC]">Phone</p>
               <a
                 href="tel:+8801758579417"
-                className="hover:text-[#8B5CF6] transition-colors"
+                className="hover:text-secondary transition-colors"
               >
                 +880 17585 79417
               </a>
@@ -99,12 +99,12 @@ export const Contact = () => {
                 type="text"
                 id="name"
                 required
-                className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-[#14B8A6] transition-colors peer placeholder-transparent"
+                className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
                 placeholder="Name"
               />
               <label
                 htmlFor="name"
-                className="absolute left-0 top-3 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#14B8A6] cursor-text"
+                className="absolute left-0 top-3 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text"
               >
                 Name
               </label>
@@ -114,12 +114,12 @@ export const Contact = () => {
                 type="email"
                 id="email"
                 required
-                className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-[#14B8A6] transition-colors peer placeholder-transparent"
+                className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-primary transition-colors peer placeholder-transparent"
                 placeholder="Work Email"
               />
               <label
                 htmlFor="email"
-                className="absolute left-0 top-3 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-[#14B8A6] cursor-text"
+                className="absolute left-0 top-3 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-primary cursor-text"
               >
                 Work Email
               </label>
@@ -131,12 +131,12 @@ export const Contact = () => {
               id="message"
               required
               rows={4}
-              className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-[#14B8A6] transition-colors peer placeholder-transparent resize-none"
+              className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-[#F8FAFC] focus:outline-none focus:border-primary transition-colors peer placeholder-transparent resize-none"
               placeholder="Message"
             />
             <label
               htmlFor="message"
-              className="absolute left-0 top-7 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-7 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-1 peer-focus:text-xs peer-focus:text-[#14B8A6] cursor-text"
+              className="absolute left-0 top-7 text-[#94A3B8] text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-7 peer-placeholder-shown:text-[#94A3B8]/70 peer-focus:-top-1 peer-focus:text-xs peer-focus:text-primary cursor-text"
             >
               Message
             </label>
@@ -145,7 +145,7 @@ export const Contact = () => {
           <button
             type="submit"
             disabled={isSubmitting || isSuccess}
-            className="w-full bg-white/5 border border-white/10 hover:bg-[#14B8A6] hover:text-[#090D14] hover:border-[#14B8A6] text-[#F8FAFC] font-semibold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:pointer-events-none disabled:bg-[#14B8A6]/20"
+            className="w-full bg-white/5 border border-white/10 hover:bg-primary hover:text-[#090D14] hover:border-primary text-[#F8FAFC] font-semibold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:pointer-events-none disabled:bg-primary/20"
           >
             {isSubmitting ? (
               <motion.div
@@ -157,7 +157,7 @@ export const Contact = () => {
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="flex items-center gap-2 text-[#14B8A6]"
+                className="flex items-center gap-2 text-primary"
               >
                 <CheckCircle className="w-5 h-5" />
                 Message Sent

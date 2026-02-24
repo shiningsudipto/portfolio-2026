@@ -4,19 +4,47 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    id: 1,
+    id: 2,
+    role: "Full Stack Engineer",
+    company: "StrategyByte",
+    dates: "Sept 2025 - Present",
+    impacts: [
+      "Leading the frontend development team to architect highly interactive and performance-optimized web architectures.",
+      "Developing end-to-end full-stack applications, integrating AI capabilities to enhance user experience and core functionality.",
+      "Orchestrating server deployments and configurations using NGINX on VPS, while managing complex data schemas across PostgreSQL and MongoDB.",
+    ],
+    stack: [
+      "Next.js",
+      "Zustand",
+      "PostgreSQL",
+      "Prisma",
+      "MongoDB",
+      "Express.js",
+      "AI",
+      "NGINX",
+      "VPS Server",
+    ],
+  },
+  {
+    id: 3,
     role: "Frontend Developer",
     company: "Jayga",
-    dates: "Jan 2025 - Present",
+    dates: "Mar 2024 - Sept 2025",
     impacts: [
       "Serving as the sole developer responsible for building user interfaces and implementing business logic.",
       "Developing a warehouse service platform offering storage solutions and inventory management based on storage grids.",
       "Managing end-to-end frontend architecture to ensure scalable and efficient state management.",
     ],
-    stack: ["React.js", "State Management", "UI/UX"],
+    stack: [
+      "React.js",
+      "Next.js",
+      "Server Actions",
+      "State Management(Redux Toolkit)",
+      "UI/UX",
+    ],
   },
   {
-    id: 2,
+    id: 4,
     role: "Intern React Developer",
     company: "Kodezen Limited",
     dates: "Nov 2023 - Feb 2024",
@@ -25,7 +53,7 @@ const experiences = [
       "Collaborated on building innovative WordPress service plugins to streamline business operations.",
       "Identified and resolved UI-related bugs, improving overall application stability and user experience.",
     ],
-    stack: ["React.js", "WordPress", "Frontend Architecture"],
+    stack: ["React.js", "SCSS", "WordPress", "Frontend Architecture"],
   },
 ];
 
@@ -42,7 +70,7 @@ export const Experience = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-          Professional <span className="text-[#14B8A6]">Experience</span>
+          Professional <span className="text-primary">Experience</span>
         </h2>
         <p className="text-[#94A3B8] mb-16 max-w-2xl text-lg">
           A track record of building production-grade systems and optimizing
@@ -61,12 +89,12 @@ export const Experience = () => {
             className="mb-16 relative pl-8 md:pl-10"
           >
             {/* Timeline Dot */}
-            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-[#14B8A6] ring-4 ring-[#090D14]" />
+            <span className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-[#090D14]" />
 
             <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2">
               <h3 className="text-xl md:text-2xl font-semibold text-[#F8FAFC]">
                 {exp.role}{" "}
-                <span className="text-[#8B5CF6]">@ {exp.company}</span>
+                <span className="text-secondary">@ {exp.company}</span>
               </h3>
               <span className="text-[#94A3B8] text-sm md:text-base font-mono bg-white/5 py-1 px-3 rounded-md mt-2 md:mt-0 w-fit">
                 {exp.dates}
@@ -79,7 +107,7 @@ export const Experience = () => {
                   key={i}
                   className="text-[#94A3B8] leading-relaxed flex items-start"
                 >
-                  <span className="text-[#14B8A6] mr-3 mt-1.5 text-xs">▹</span>
+                  <span className="text-primary mr-3 mt-1.5 text-xs">▹</span>
                   {impact}
                 </li>
               ))}

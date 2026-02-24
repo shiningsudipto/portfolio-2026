@@ -46,7 +46,7 @@ export const Projects = () => {
         className="mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-          Featured <span className="text-[#14B8A6]">Case Studies</span>
+          Featured <span className="text-primary">Case Studies</span>
         </h2>
         <p className="text-[#94A3B8] max-w-2xl text-lg">
           Technical solutions that delivered measurable business outcomes.
@@ -82,7 +82,7 @@ export const Projects = () => {
                     <span className="block text-[10px] text-[#94A3B8] uppercase tracking-wider">
                       {key}
                     </span>
-                    <span className="block text-sm font-bold text-[#14B8A6]">
+                    <span className="block text-sm font-bold text-primary">
                       {val}
                     </span>
                   </div>
@@ -103,7 +103,7 @@ export const Projects = () => {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs font-mono text-[#8B5CF6] bg-[#8B5CF6]/10 px-3 py-1 rounded-full border border-[#8B5CF6]/20"
+                    className="text-xs font-mono text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20"
                   >
                     {tag}
                   </span>
@@ -115,7 +115,7 @@ export const Projects = () => {
                   href={project.links.live}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 text-[#F8FAFC] font-semibold hover:text-[#14B8A6] transition-colors group"
+                  className="flex items-center gap-2 text-[#F8FAFC] font-semibold hover:text-primary transition-colors group"
                 >
                   Live Demo
                   <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

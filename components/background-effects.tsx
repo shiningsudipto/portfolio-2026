@@ -6,7 +6,7 @@ export const BackgroundEffects = () => {
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#090D14]">
       {/* CSS Grid Texture */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-size-[40px_40px] opacity-20"></div>
 
       {/* Radial Orbs */}
       <motion.div
@@ -21,7 +21,7 @@ export const BackgroundEffects = () => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute top-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-[#14B8A6] blur-[150px] opacity-30 mix-blend-screen"
+        className="absolute top-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-primary blur-[150px] opacity-30 mix-blend-screen"
       />
       <motion.div
         animate={{
@@ -35,7 +35,7 @@ export const BackgroundEffects = () => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="absolute bottom-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-[#8B5CF6] blur-[150px] opacity-20 mix-blend-screen"
+        className="absolute bottom-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-secondary blur-[150px] opacity-20 mix-blend-screen"
       />
     </div>
   );

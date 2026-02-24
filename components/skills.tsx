@@ -8,12 +8,13 @@ const skillsData = [
     items: [
       "React.js",
       "Next.js",
-      "TypeScript",
-      "Redux Toolkit",
-      "TailwindCSS",
       "RTK Query",
+      "Zustand",
+      "Shadcn UI",
+      "TailwindCSS",
+      "TypeScript",
     ],
-    color: "#14B8A6",
+    color: "var(--color-primary)",
   },
   {
     category: "Backend Services",
@@ -25,7 +26,7 @@ const skillsData = [
       "JWT Authentication",
       "Zod (Validation)",
     ],
-    color: "#8B5CF6",
+    color: "var(--color-secondary)",
   },
   {
     category: "Database & Cloud Infrastructure",
@@ -66,7 +67,7 @@ export const Skills = () => {
         className="text-center mb-16"
       >
         <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-          Core <span className="text-[#8B5CF6]">Architecture</span>
+          Core <span className="text-secondary">Architecture</span>
         </h2>
         <p className="text-[#94A3B8] max-w-2xl mx-auto text-lg">
           Mastering modern technologies to build resilient, scalable systems
@@ -119,7 +120,7 @@ export const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="mt-20 p-8 rounded-2xl border border-[#14B8A6]/20 bg-[#14B8A6]/5 text-center"
+        className="mt-20 p-8 rounded-2xl border border-primary/20 bg-primary/5 text-center"
       >
         <p className="text-[#F8FAFC] text-lg font-medium">
           &quot;A solid architecture is the foundation of any application that

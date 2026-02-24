@@ -25,7 +25,7 @@ export const Hero = () => {
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center pt-24"
+      className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center"
       id="home"
     >
       <motion.div
@@ -36,11 +36,11 @@ export const Hero = () => {
       >
         <motion.div
           variants={childVariants}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#14B8A6]/10 border border-[#14B8A6]/20 text-[#14B8A6] text-sm mb-6"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-6"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14B8A6] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#14B8A6]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>
           Available for new opportunities
         </motion.div>
@@ -57,9 +57,9 @@ export const Hero = () => {
           variants={childVariants}
           className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto mb-10 leading-relaxed gap-6"
         >
-          I&apos;m Sudipta Das, a Full Stack Web Developer with 1+ year of
+          I&apos;m Sudipta Das, a Full Stack Web Developer with 2+ year of
           professional experience building impactful, clean, and scalable web
-          solutions using the MERN stack and Next.js.
+          solutions.
         </motion.p>
 
         <motion.div
@@ -106,7 +106,7 @@ export const Hero = () => {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-linear-to-bl from-[#14B8A6] to-[#8B5CF6] rounded-full blur-[120px]"
+          className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-linear-to-bl from-primary to-secondary rounded-full blur-[120px]"
         />
         <motion.div
           animate={{
@@ -115,7 +115,7 @@ export const Hero = () => {
             x: [0, 100, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-linear-to-tr from-[#8B5CF6] to-[#090D14] rounded-full blur-[100px]"
+          className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-linear-to-tr from-secondary to-[#090D14] rounded-full blur-[100px]"
         />
       </div>
 
@@ -136,7 +136,7 @@ export const Hero = () => {
           rotateY: [0, 15, -15, 0],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-[#14B8A6]/20 rounded-full opacity-30 pointer-events-none z-0"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/20 rounded-full opacity-30 pointer-events-none z-0"
       />
 
       {/* Floating particles/nodes */}

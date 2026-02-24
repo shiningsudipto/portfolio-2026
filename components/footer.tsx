@@ -36,7 +36,7 @@ export const Footer = () => {
               onClick={scrollToTop}
               className="text-xl font-bold text-[#F8FAFC] tracking-tighter cursor-pointer group"
             >
-              Dev<span className="text-[#14B8A6]">Studio</span>
+              Dev<span className="text-primary">Studio</span>
             </button>
           </div>
 
@@ -45,7 +45,7 @@ export const Footer = () => {
               href="https://github.com/shiningsudipto"
               target="_blank"
               rel="noreferrer"
-              className="p-3 text-[#94A3B8] hover:text-[#14B8A6] rounded-full bg-white/5 border border-white/10 hover:border-[#14B8A6]/50 transition-all hover:-translate-y-1"
+              className="p-3 text-[#94A3B8] hover:text-primary rounded-full bg-white/5 border border-white/10 hover:border-primary/50 transition-all hover:-translate-y-1"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -54,7 +54,7 @@ export const Footer = () => {
               href="https://linkedin.com/in/sudiptadas-dev"
               target="_blank"
               rel="noreferrer"
-              className="p-3 text-[#94A3B8] hover:text-[#8B5CF6] rounded-full bg-white/5 border border-white/10 hover:border-[#8B5CF6]/50 transition-all hover:-translate-y-1"
+              className="p-3 text-[#94A3B8] hover:text-secondary rounded-full bg-white/5 border border-white/10 hover:border-secondary/50 transition-all hover:-translate-y-1"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -70,7 +70,7 @@ export const Footer = () => {
       </div>
 
       {/* Subtle Background Glow */}
-      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#14B8A6]/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
     </footer>
   );
 };

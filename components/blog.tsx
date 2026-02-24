@@ -31,15 +31,17 @@ export const Blog = () => {
       >
         <div>
           <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">
-            Technical <span className="text-[#8B5CF6]">Writing</span>
+            Technical <span className="text-secondary">Writing</span>
           </h2>
           <p className="text-[#94A3B8] max-w-2xl text-lg">
             Thoughts, tutorials, and deep dives into modern web engineering.
           </p>
         </div>
         <a
-          href="#"
-          className="group flex items-center gap-2 text-[#14B8A6] font-medium hover:text-[#F8FAFC] transition-colors"
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.linkedin.com/in/sudiptadasweb/"
+          className="group flex items-center gap-2 text-primary font-medium hover:text-[#F8FAFC] transition-colors"
         >
           View all articles
           <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -57,24 +59,24 @@ export const Blog = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group flex flex-col bg-white/2 border border-white/5 rounded-2xl p-6 hover:bg-white/5 hover:border-[#8B5CF6]/30 transition-all duration-300 relative overflow-hidden h-full"
+            className="group flex flex-col bg-white/2 border border-white/5 rounded-2xl p-6 hover:bg-white/5 hover:border-secondary/30 transition-all duration-300 relative overflow-hidden h-full"
           >
             <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 duration-300">
-              <ArrowUpRight className="w-6 h-6 text-[#8B5CF6]" />
+              <ArrowUpRight className="w-6 h-6 text-secondary" />
             </div>
 
             <div className="flex flex-wrap gap-2 mb-4">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] font-mono uppercase tracking-wider text-[#14B8A6] bg-[#14B8A6]/10 px-2 py-1 rounded"
+                  className="text-[10px] font-mono uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <h3 className="text-xl font-bold text-[#F8FAFC] mb-3 group-hover:text-[#8B5CF6] transition-colors line-clamp-2">
+            <h3 className="text-xl font-bold text-[#F8FAFC] mb-3 group-hover:text-secondary transition-colors line-clamp-2">
               {post.title}
             </h3>
 

@@ -41,7 +41,7 @@ export const Navbar = () => {
         <motion.div
           whileHover={{ textShadow: "0px 0px 8px rgba(20, 184, 166, 0.8)" }}
         >
-          Dev<span className="text-[#14B8A6]">Studio</span>
+          Dev<span className="text-primary">Studio</span>
         </motion.div>
       </button>
 
@@ -68,7 +68,7 @@ export const Navbar = () => {
         transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="px-6 py-2 rounded-full border border-[#14B8A6] text-[#14B8A6] font-medium text-sm transition-colors hover:bg-[#14B8A6] hover:text-[#090D14]"
+        className="px-6 py-2 rounded-full border border-primary text-primary font-medium text-sm transition-colors hover:bg-primary hover:text-[#090D14]"
       >
         View Resume
       </motion.button>
