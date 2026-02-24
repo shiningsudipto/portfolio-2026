@@ -57,9 +57,9 @@ export const Hero = () => {
           variants={childVariants}
           className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto mb-10 leading-relaxed gap-6"
         >
-          Mid-Level Full-Stack MERN Developer with 2+ years of experience
-          building production-ready systems, optimizing performance, and
-          delivering business value.
+          I&apos;m Sudipta Das, a Full Stack Web Developer with 1+ year of
+          professional experience building impactful, clean, and scalable web
+          solutions using the MERN stack and Next.js.
         </motion.p>
 
         <motion.div
@@ -75,7 +75,7 @@ export const Hero = () => {
           </a>
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href="https://github.com/shiningsudipto"
               target="_blank"
               rel="noreferrer"
               className="p-3 text-[#94A3B8] hover:text-[#F8FAFC] rounded-full hover:bg-white/5 transition-all"
@@ -83,7 +83,7 @@ export const Hero = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/sudiptadas-dev"
               target="_blank"
               rel="noreferrer"
               className="p-3 text-[#94A3B8] hover:text-[#F8FAFC] rounded-full hover:bg-white/5 transition-all"

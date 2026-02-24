@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
 import { BackgroundEffects } from "@/components/background-effects";
 import { About } from "@/components/about";
+import { Blog } from "@/components/blog";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Experience />
         <Skills />
         <Projects />
+        <Blog />
         <Contact />
       </div>
     </main>

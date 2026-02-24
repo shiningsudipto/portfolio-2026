@@ -52,26 +52,24 @@ export const About = () => {
           className="w-full md:w-7/12 flex flex-col justify-center space-y-6 text-[#94A3B8] text-lg leading-relaxed"
         >
           <p>
-            Hello! I&apos;m a Full-Stack MERN Developer specializing in
-            architecting scalable and performant web applications. With over 2
-            years of professional experience, my engineering philosophy revolves
-            around writing clean, testable code and building resilient systems
-            that solve real business problems.
+            Hello! I&apos;m Sudipta Das, a Full Stack Web Developer specializing
+            in architecting scalable and performant web applications. With an
+            educational background in Marketing, I excel in aligning web
+            development and user experience with genuine business objectives.
           </p>
 
           <p>
-            My journey began when I started automating small tasks during
-            college, which quickly escalated into a deep dive into the
-            Javascript ecosystem. Today, I build dynamic frontends with React &
-            Next.js and power them with robust Node.js architectures in the
-            backend.
+            With expertise in the MERN stack alongside tools like Next.js,
+            TypeScript, and Prisma ORM, I focus on solving complex challenges
+            and delivering clean, maintainable code. My passion lies in learning
+            new technologies to stay ahead of industry trends and applying them
+            to build efficient systems.
           </p>
 
           <p>
-            When I&apos;m not writing code, you&apos;ll probably find me
-            exploring new tech paradigms, contributing to open source, or trying
-            to optimize my personal workflows. I believe good engineering is a
-            mix of structure, creativity, and constant iteration.
+            Beyond core development, I bring skills in Graphic Design, Adobe
+            Photoshop, Figma, and SEO, allowing me to approach web applications
+            with a well-rounded creative and technical perspective.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
@@ -79,7 +77,7 @@ export const About = () => {
               <span className="block text-[#F8FAFC] font-semibold text-xl mb-1">
                 Location
               </span>
-              <span className="text-sm font-mono">Global / Remote</span>
+              <span className="text-sm font-mono">Barishal, Bangladesh</span>
             </div>
             <div>
               <span className="block text-[#F8FAFC] font-semibold text-xl mb-1">

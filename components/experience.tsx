@@ -5,27 +5,27 @@ import { motion } from "framer-motion";
 const experiences = [
   {
     id: 1,
-    role: "Full-Stack Engineer",
-    company: "TechNova Solutions",
-    dates: "Jan 2023 - Present",
+    role: "Frontend Developer",
+    company: "Jayga",
+    dates: "Jan 2025 - Present",
     impacts: [
-      "Architected and deployed a multi-tenant SaaS application using Next.js and Node.js, supporting 10k+ daily active users.",
-      "Optimized MongoDB aggregation pipelines, reducing average API response times from 800ms to under 150ms.",
-      "Implemented a CI/CD pipeline with GitHub Actions and Docker, reducing deployment time by 40%.",
+      "Serving as the sole developer responsible for building user interfaces and implementing business logic.",
+      "Developing a warehouse service platform offering storage solutions and inventory management based on storage grids.",
+      "Managing end-to-end frontend architecture to ensure scalable and efficient state management.",
     ],
-    stack: ["Next.js", "Node.js", "MongoDB", "Docker", "AWS"],
+    stack: ["React.js", "State Management", "UI/UX"],
   },
   {
     id: 2,
-    role: "MERN Stack Developer",
-    company: "Creative Labs Inc.",
-    dates: "Jun 2021 - Dec 2022",
+    role: "Intern React Developer",
+    company: "Kodezen Limited",
+    dates: "Nov 2023 - Feb 2024",
     impacts: [
-      "Led the frontend team to migrate a legacy React application to Next.js, improving SEO scores by 35%.",
-      "Designed robust RESTful APIs using Express.js and integrated them with third-party payment gateways like Stripe.",
-      "Integrated Redux for complex state management across 50+ interactive pages, improving code maintainability.",
+      "Created dynamic and responsive user interfaces using React for diverse web applications.",
+      "Collaborated on building innovative WordPress service plugins to streamline business operations.",
+      "Identified and resolved UI-related bugs, improving overall application stability and user experience.",
     ],
-    stack: ["React", "Express.js", "Redux", "Stripe", "PostgreSQL"],
+    stack: ["React.js", "WordPress", "Frontend Architecture"],
   },
 ];
 

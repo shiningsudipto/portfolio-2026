@@ -10,8 +10,8 @@ const skillsData = [
       "Next.js",
       "TypeScript",
       "Redux Toolkit",
-      "Framer Motion",
-      "Tailwind CSS",
+      "TailwindCSS",
+      "RTK Query",
     ],
     color: "#14B8A6",
   },
@@ -20,10 +20,10 @@ const skillsData = [
     items: [
       "Node.js",
       "Express.js",
-      "GraphQL",
+      "Prisma ORM",
       "RESTful APIs",
-      "Socket.io",
-      "Authentication (JWT/OAuth)",
+      "JWT Authentication",
+      "Zod (Validation)",
     ],
     color: "#8B5CF6",
   },
@@ -32,10 +32,10 @@ const skillsData = [
     items: [
       "MongoDB",
       "PostgreSQL",
-      "Redis",
-      "Docker",
-      "AWS (S3, EC2)",
-      "CI/CD (GitHub Actions)",
+      "Mongoose",
+      "Stripe / AmarPay",
+      "Figma / Photoshop",
+      "SEO",
     ],
     color: "#3B82F6",
   },
@@ -106,7 +106,7 @@ export const Skills = () => {
                   className="px-4 py-2 bg-black/40 border border-white/10 rounded-lg text-[#94A3B8] text-sm hover:text-white hover:border-white/30 transition-all cursor-default relative overflow-hidden group"
                 >
                   <span className="relative z-10">{skill}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
                 </motion.span>
               ))}
             </div>

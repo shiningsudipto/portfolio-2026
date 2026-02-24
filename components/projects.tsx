@@ -6,23 +6,29 @@ import { ArrowUpRight, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "EcoCommerce Platform",
+    title: "E-Commerce Platform",
     description:
-      "A fast, scalable e-commerce platform with real-time inventory management.",
+      "A fast, scalable e-commerce platform featuring a modern UI and robust inventory management.",
     image: "/api/placeholder/600/400", // using placeholder, should be replaced with real image
-    tags: ["Next.js", "State Management (Zustand)", "Stripe", "PostgreSQL"],
-    stats: { Users: "10K+", Uptime: "99.99%", Sales: "+45%" },
-    links: { live: "#", github: "#" },
+    tags: ["React.js", "Next.js", "Node.js", "TailwindCSS", "MongoDB"],
+    stats: { Scale: "Next.js 14", Stack: "MERN", DB: "MongoDB" },
+    links: {
+      live: "https://sudiptadas.netlify.app/project/e-commerce-platform-sudipta-das-1735306285798",
+      github: "https://github.com/shiningsudipto",
+    },
   },
   {
     id: 2,
-    title: "TaskFlow Architecture",
+    title: "Ultimate Tripz (Social Site)",
     description:
-      "Enterprise task management system with complex role-based access control.",
+      "A social networking platform built to connect travelers, manage trips, and share experiences.",
     image: "/api/placeholder/600/400",
-    tags: ["React", "Node.js", "Redis (Caching)", "Docker"],
-    stats: { Responses: "<100ms", Teams: "500+", Tasks: "1M+" },
-    links: { live: "#", github: "#" },
+    tags: ["Next.js", "TypeScript", "TailwindCSS"],
+    stats: { Frontend: "Next.js", Language: "TypeScript", Styling: "Tailwind" },
+    links: {
+      live: "https://sudiptadas.netlify.app/project/ultimate-tripz-(a-social-site)-sudipta-das-1735306902746",
+      github: "https://github.com/shiningsudipto",
+    },
   },
 ];
 
