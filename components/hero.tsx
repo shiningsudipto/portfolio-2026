@@ -119,50 +119,53 @@ export const Hero = () => {
         />
       </div>
 
-      {/* Floating 3D/Abstract element backdrop */}
-      <motion.div
-        animate={{
-          y: [-20, 20, -20],
-          rotateX: [0, 10, -10, 0],
-          rotateY: [0, -15, 15, 0],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full border-dashed opacity-20 pointer-events-none z-0"
-      />
-      <motion.div
-        animate={{
-          y: [20, -20, 20],
-          rotateX: [0, -10, 10, 0],
-          rotateY: [0, 15, -15, 0],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/20 rounded-full opacity-30 pointer-events-none z-0"
-      />
-
-      {/* Floating particles/nodes */}
+      {/* Diagonal Grid - Synthwave */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full pointer-events-none z-0 border border-white/20 bg-white/5"
+        <div
+          className="absolute -inset-full bg-[linear-gradient(to_right,rgba(236,72,153,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(236,72,153,0.15)_1px,transparent_1px)] bg-size-[60px_60px]"
+          style={{ transform: "rotate(45deg) scale(1.5)" }}
+        />
+        <div
+          className="absolute -inset-full bg-[linear-gradient(to_right,rgba(6,182,212,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,182,212,0.1)_1px,transparent_1px)] bg-size-[120px_120px]"
+          style={{ transform: "rotate(45deg) scale(1.5)" }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at center, transparent 20%, #090D14 70%)",
+          }}
+        />
+      </div>
+
+      {/* Shooting Stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {[
+          { top: "10%", left: "80%", delay: 0 },
+          { top: "30%", left: "50%", delay: 1.2 },
+          { top: "5%", left: "90%", delay: 2.5 },
+          { top: "60%", left: "70%", delay: 0.5 },
+          { top: "40%", left: "95%", delay: 1.8 },
+          { top: "80%", left: "60%", delay: 2.1 },
+          { top: "20%", left: "100%", delay: 0.8 },
+          { top: "70%", left: "85%", delay: 1.5 },
+        ].map((star, i) => (
+          <div
+            key={`star-${i}`}
+            className="absolute"
             style={{
-              width: Math.random() * 40 + 10 + "px",
-              height: Math.random() * 40 + 10 + "px",
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 100 + "%",
+              top: star.top,
+              left: star.left,
+              transform: "rotate(315deg)",
             }}
-            animate={{
-              y: [0, Math.random() * -200 - 50],
-              x: [0, Math.random() * 100 - 50],
-              opacity: [0, Math.random() * 0.3 + 0.1, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
+          >
+            <div
+              className="relative w-[4px] h-[4px] bg-white rounded-full shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_0_0_8px_rgba(255,255,255,0.1),0_0_20px_rgba(255,255,255,1)] before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-1/2 before:w-[300px] before:h-px before:bg-linear-to-r before:from-white before:to-transparent animate-[falling-star_3s_linear_infinite]"
+              style={{
+                animationDelay: `${star.delay}s`,
+              }}
+            />
+          </div>
         ))}
       </div>
     </section>
