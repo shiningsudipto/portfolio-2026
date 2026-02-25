@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Heart } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -62,9 +62,7 @@ export const Footer = () => {
           </div>
 
           <p className="text-[#94A3B8] text-sm flex items-center justify-end gap-2">
-            Made with{" "}
-            <Heart className="w-4 h-4 text-[#EF4444] fill-[#EF4444]" /> by
-            Sudipta © {currentYear}
+            Developed by Sudipta © {currentYear}
           </p>
         </div>
       </div>

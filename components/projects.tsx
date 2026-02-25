@@ -2,32 +2,44 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
+import Image from "next/image";
 
-const projects = [
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  stats: Record<string, string>;
+  links: {
+    live: string;
+    github?: string;
+  };
+}
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Jayga (A Warehouse Management System)",
     description:
-      "A fast, scalable e-commerce platform featuring a modern UI and robust inventory management.",
-    image: "/api/placeholder/600/400", // using placeholder, should be replaced with real image
-    tags: ["React.js", "Next.js", "Node.js", "TailwindCSS", "MongoDB"],
-    stats: { Scale: "Next.js 14", Stack: "MERN", DB: "MongoDB" },
+      "Developed a full-featured Warehouse Management System (WMS) as a solo web developer, architecting both admin and client portals. Integrated PayStation, email verification, and automated PDF generation while building complex modules for grid-based inventory and delivery tracking.",
+    image: "/blogs/jayga-s-m-l.png",
+    tags: ["React JS", "Redux", "Tanstack Table", "Formik", "TailwindCSS"],
+    stats: { Role: "Solo Dev", Type: "WMS", Backend: "Node.js" },
     links: {
-      live: "https://sudiptadas.netlify.app/project/e-commerce-platform-sudipta-das-1735306285798",
-      github: "https://github.com/shiningsudipto",
+      live: "https://jayga.io",
     },
   },
   {
     id: 2,
-    title: "Ultimate Tripz (Social Site)",
+    title: "StrategyByte - AI Powered Portfolio",
     description:
-      "A social networking platform built to connect travelers, manage trips, and share experiences.",
-    image: "/api/placeholder/600/400",
-    tags: ["Next.js", "TypeScript", "TailwindCSS"],
-    stats: { Frontend: "Next.js", Language: "TypeScript", Styling: "Tailwind" },
+      "Leading the frontend team to architect highly interactive architectures. Integrated AI capabilities to enhance user experience and core functionality while managing complex data schemas across PostgreSQL and MongoDB.",
+    image: "/blogs/strategybyte-s-m-l.png",
+    tags: ["Next.js", "TailwindCSS", "ShadcnUI", "GSAP"],
+    stats: { Role: "Lead", Year: "2025", Tech: "Next.js" },
     links: {
-      live: "https://sudiptadas.netlify.app/project/ultimate-tripz-(a-social-site)-sudipta-das-1735306902746",
-      github: "https://github.com/shiningsudipto",
+      live: "https://strategybyte.com.au",
     },
   },
 ];
@@ -64,13 +76,13 @@ export const Projects = () => {
             className={`flex flex-col ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-12 items-center`}
           >
             {/* Image Side */}
-            <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5">
-              <div className="absolute inset-0 bg-linear-to-t from-[#090D14] via-transparent to-transparent z-10 opacity-60 transition-opacity group-hover:opacity-20" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5 min-h-[350px]">
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                width={600}
+                height={600}
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               {/* Overlay Stats */}
               <div className="absolute bottom-4 left-4 z-20 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-500">
@@ -120,15 +132,17 @@ export const Projects = () => {
                   Live Demo
                   <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                  Source Code
-                </a>
+                {project?.links?.github && (
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    Source Code
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>

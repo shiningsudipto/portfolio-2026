@@ -1,3 +1,4 @@
 - primary-color: #d2c1b5
 - secondary-color: #8B5CF6
 - accent-color: #14B8A6
+- blog-bg: #12877a

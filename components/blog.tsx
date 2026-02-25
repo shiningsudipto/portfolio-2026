@@ -20,7 +20,7 @@ export const Blog = () => {
   return (
     <section
       id="blog"
-      className="py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 relative"
+      className="py-24 px-6 md:px-12 max-w-6xl mx-auto z-10 relative bg-blog-bg/5 rounded-3xl"
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
