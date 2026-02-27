@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Package } from "lucide-react";
 import Image from "next/image";
 
 interface Project {
@@ -14,6 +14,7 @@ interface Project {
   links: {
     live: string;
     github?: string;
+    npm?: string;
   };
 }
 
@@ -23,9 +24,9 @@ const projects: Project[] = [
     title: "Jayga (A Warehouse Management System)",
     description:
       "Developed a full-featured Warehouse Management System (WMS) as a solo web developer, architecting both admin and client portals. Integrated PayStation, email verification, and automated PDF generation while building complex modules for grid-based inventory and delivery tracking.",
-    image: "/blogs/jayga-s-m-l.png",
+    image: "/projects/jayga-s-m-l.png",
     tags: ["React JS", "Redux", "Tanstack Table", "Formik", "TailwindCSS"],
-    stats: { Role: "Solo Dev", Type: "WMS", Backend: "Node.js" },
+    stats: { Role: "Solo Dev", Type: "WMS", Tech: "React.js" },
     links: {
       live: "https://jayga.io",
     },
@@ -34,12 +35,26 @@ const projects: Project[] = [
     id: 2,
     title: "StrategyByte - AI Powered Portfolio",
     description:
-      "Leading the frontend team to architect highly interactive architectures. Integrated AI capabilities to enhance user experience and core functionality while managing complex data schemas across PostgreSQL and MongoDB.",
-    image: "/blogs/strategybyte-s-m-l.png",
+      "Leading the engineering team to architect highly interactive architectures. Integrated AI capabilities to enhance user experience and core functionality while managing complex data schemas across PostgreSQL and MongoDB.",
+    image: "/projects/strategybyte-s-m-l.png",
     tags: ["Next.js", "TailwindCSS", "ShadcnUI", "GSAP"],
     stats: { Role: "Lead", Year: "2025", Tech: "Next.js" },
     links: {
       live: "https://strategybyte.com.au",
+    },
+  },
+  {
+    id: 3,
+    title: "React Customizable Dropdown",
+    description:
+      "A powerful, flexible, and accessible select component for React. Built with TypeScript, it supports multi-select, async data fetching, and extensive theming options, providing a premium developer experience.",
+    image: "/projects/react-customizable-dropdown-mockup.png",
+    tags: ["React", "TypeScript", "NPM", "Theming", "Accessibility"],
+    stats: { Role: "Author", Type: "NPM Package", Tech: "React" },
+    links: {
+      live: "https://react-customizable-dropdown.vercel.app",
+      github: "https://github.com/shiningsudipto/react-customizable-dropdown",
+      npm: "https://www.npmjs.com/package/react-customizable-dropdown",
     },
   },
 ];
@@ -141,6 +156,17 @@ export const Projects = () => {
                   >
                     <Github className="w-5 h-5" />
                     Source Code
+                  </a>
+                )}
+                {project?.links?.npm && (
+                  <a
+                    href={project.links.npm}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-2 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
+                  >
+                    <Package className="w-5 h-5" />
+                    NPM Package
                   </a>
                 )}
               </div>
