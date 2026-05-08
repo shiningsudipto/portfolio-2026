@@ -23,7 +23,7 @@ export const Hero3D = () => {
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    mountRef.current.appendChild(renderer.domElement);
+    mountNode.appendChild(renderer.domElement);
 
     // Create a highly tessellated sphere
     const geometry = new THREE.IcosahedronGeometry(2, 32);
