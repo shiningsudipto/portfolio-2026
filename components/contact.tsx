@@ -88,8 +88,8 @@ export const Contact = () => {
         <motion.form
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ type: "spring", damping: 20, stiffness: 80, delay: 0.2 }}
           onSubmit={handleSubmit}
           className="md:col-span-3 space-y-6 bg-white/2 border border-white/5 p-8 rounded-2xl backdrop-blur-md shadow-2xl"
         >

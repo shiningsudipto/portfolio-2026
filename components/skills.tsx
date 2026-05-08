@@ -81,8 +81,8 @@ export const Skills = () => {
             key={group.category}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
             className="p-8 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-sm shadow-[0_0_40px_rgba(0,0,0,0.5)]"
           >
             <div className="flex items-center gap-3 mb-6">

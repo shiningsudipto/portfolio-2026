@@ -83,8 +83,8 @@ export const Blog = () => {
             key={post.id}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
             className="group flex flex-col bg-white/2 border border-white/5 rounded-2xl p-8 hover:bg-white/5 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden h-[400px] justify-end"
           >
             {/* Background Cover Image on Hover */}

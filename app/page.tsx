@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+// import { HeroDemo } from "@/components/hero-demo";
+// import { Hero3D } from "@/components/hero-3d";
 import { Experience } from "@/components/experience";
 import { Skills } from "@/components/skills";
 import { Projects } from "@/components/projects";
@@ -16,7 +18,9 @@ export default function Home() {
       <Navbar />
 
       <div className="flex flex-col gap-24 md:gap-32 w-full pt-16">
-        <Hero />
+        <Hero /> {/* New Glassmorphism / Spotlight Style */}
+        {/* <Hero3D /> */} {/* Brutalist 3D Sphere Style */}
+        {/* <HeroDemo /> */} {/* Original Synthwave Neon Style */}
         <About />
         <Experience />
         <Skills />

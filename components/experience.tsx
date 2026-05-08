@@ -84,8 +84,8 @@ export const Experience = () => {
             key={exp.id}
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
             className="mb-16 relative pl-8 md:pl-10"
           >
             {/* Timeline Dot */}

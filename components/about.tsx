@@ -1,9 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useRef } from "react";
 
 export const About = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   return (
     <section
       id="about"
@@ -25,25 +32,27 @@ export const About = () => {
       <div className="flex flex-col md:flex-row gap-12">
         {/* Left Side: Image/Visual Placeholder */}
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ type: "spring", damping: 20, stiffness: 80, delay: 0.2 }}
           className="w-full md:w-5/12 aspect-[4/5] relative rounded-2xl overflow-hidden group border border-white/10 bg-white/5"
         >
           {/* Decorative frame elements */}
           <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary z-20 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-secondary z-20 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
 
-          <div className="absolute inset-0 md:bg-gradient-to-tr md:from-[#090D14]/50 to-transparent z-10" />
-          <Image
-            src="/sudipta-das, shiningsudipta, sit-1.png" // using placeholder, should be replaced with real image
-            alt="Portrait placeholder"
-            width={500}
-            height={500}
-            quality={100}
-            className="w-full h-full object-cover md:filter md:grayscale md:group-hover:grayscale-0 md:transition-all md:duration-700 md:ease-out md:transform md:group-hover:scale-105"
-          />
+          <div className="absolute inset-0 md:bg-gradient-to-tr md:from-[#090D14]/50 to-transparent z-10 pointer-events-none" />
+          <motion.div style={{ y }} className="absolute -inset-y-[15%] inset-x-0 w-full">
+            <Image
+              src="/sudipta-das, shiningsudipta, sit-1.png" // using placeholder, should be replaced with real image
+              alt="Portrait placeholder"
+              fill
+              quality={100}
+              className="object-cover md:filter md:grayscale md:group-hover:grayscale-0 md:transition-all md:duration-700 md:ease-out md:transform md:group-hover:scale-105"
+            />
+          </motion.div>
         </motion.div>
 
         {/* Right Side: Text Content */}
