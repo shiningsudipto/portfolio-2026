@@ -77,10 +77,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
-      className={`flex flex-col ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-12 items-center`}
+      className={`flex flex-col ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 lg:gap-12 items-center`}
     >
       {/* Image Side */}
-      <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5 min-h-[350px]">
+      <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5">
         <motion.div style={{ y }} className="absolute -inset-y-1/4 inset-x-0 w-full">
           <Image
             src={project.image}
@@ -89,17 +89,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </motion.div>
-        {/* Overlay Stats */}
-        <div className="absolute bottom-4 left-4 z-20 flex flex-wrap gap-4 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 duration-500">
+        {/* Overlay Stats (visible on hover for desktop, always visible on mobile) */}
+        <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 z-20 flex flex-wrap gap-2 md:gap-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 duration-500">
           {Object.entries(project.stats).map(([key, val]) => (
             <div
               key={key}
-              className="bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10"
+              className="bg-black/80 backdrop-blur-md px-2 py-1 md:px-3 md:py-1.5 rounded-lg border border-white/10"
             >
-              <span className="block text-[10px] text-[#94A3B8] uppercase tracking-wider">
+              <span className="block text-[8px] md:text-[10px] text-[#94A3B8] uppercase tracking-wider">
                 {key}
               </span>
-              <span className="block text-sm font-bold text-primary">
+              <span className="block text-xs md:text-sm font-bold text-primary">
                 {val}
               </span>
             </div>
@@ -108,11 +108,11 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       </div>
 
       {/* Content Side */}
-      <div className="w-full lg:w-1/2 space-y-6">
-        <h3 className="text-3xl font-bold text-[#F8FAFC]">
+      <div className="w-full lg:w-1/2 space-y-4 md:space-y-6">
+        <h3 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
           {project.title}
         </h3>
-        <p className="text-[#94A3B8] text-lg leading-relaxed">
+        <p className="text-[#94A3B8] text-base md:text-lg leading-relaxed">
           {project.description}
         </p>
 
@@ -127,7 +127,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           ))}
         </div>
 
-        <div className="flex items-center gap-6 pt-6 border-t border-white/10">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-6 border-t border-white/10">
           <a
             href={project.links.live}
             target="_blank"
@@ -186,7 +186,7 @@ export const Projects = () => {
         </p>
       </motion.div>
 
-      <div className="space-y-24 rounded-none">
+      <div className="space-y-16 md:space-y-24 rounded-none">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
