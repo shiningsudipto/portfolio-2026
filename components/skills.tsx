@@ -13,6 +13,8 @@ const skillsData = [
       "Shadcn UI",
       "TailwindCSS",
       "TypeScript",
+      "Figma / Photoshop",
+      "SEO",
     ],
     color: "var(--color-primary)",
   },
@@ -22,21 +24,27 @@ const skillsData = [
       "Node.js",
       "Express.js",
       "Prisma ORM",
+      "GraphQL",
       "RESTful APIs",
       "JWT Authentication",
       "Zod (Validation)",
+      "AI Integration",
+      "Stripe / Paystation / AmarPay",
     ],
     color: "var(--color-secondary)",
   },
   {
-    category: "Database & Cloud Infrastructure",
+    category: "Database & Infrastructure",
     items: [
       "MongoDB",
       "PostgreSQL",
+      "MySQL",
+      "Redis",
       "Mongoose",
-      "Stripe / AmarPay",
-      "Figma / Photoshop",
-      "SEO",
+      "ERD (Database Design)",
+      "Nginx",
+      "Load Balancing",
+      "Claude Code",
     ],
     color: "#3B82F6",
   },
@@ -82,7 +90,12 @@ export const Skills = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-10%" }}
-            transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
+            transition={{
+              type: "spring",
+              damping: 20,
+              stiffness: 80,
+              delay: index * 0.1,
+            }}
             className="p-8 rounded-2xl bg-white/2 border border-white/5 backdrop-blur-sm shadow-[0_0_40px_rgba(0,0,0,0.5)]"
           >
             <div className="flex items-center gap-3 mb-6">

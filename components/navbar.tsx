@@ -1,34 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { useState, MouseEvent } from "react";
 
 const navItems = [
-  { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "About", href: "#about" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
 
 export const Navbar = () => {
-  const [magneticPosition, setMagneticPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: MouseEvent<HTMLButtonElement>) => {
-    const { clientX, clientY } = e;
-    const { top, left, width, height } =
-      e.currentTarget.getBoundingClientRect();
-    const x = clientX - (left + width / 2);
-    const y = clientY - (top + height / 2);
-    setMagneticPosition({ x: x * 0.3, y: y * 0.3 });
-  };
-
-  const handleMouseLeave = () => {
-    setMagneticPosition({ x: 0, y: 0 });
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-[#090D14]/70 border-b border-white/5">
       <button
@@ -63,15 +46,10 @@ export const Navbar = () => {
         ))}
       </ul>
 
-      <motion.button
-        animate={{ x: magneticPosition.x, y: magneticPosition.y }}
-        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="px-6 py-2 rounded-full border border-primary text-primary font-medium text-sm transition-colors hover:bg-primary hover:text-[#090D14]"
-      >
-        View Resume
-      </motion.button>
+      <button className="group relative px-6 py-2 rounded-full border border-primary text-primary font-medium text-sm overflow-hidden transition-colors duration-300 hover:text-[#fff] cursor-pointer">
+        <span className="absolute inset-0 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out z-0" />
+        <span className="relative z-10">View Resume</span>
+      </button>
     </nav>
   );
 };

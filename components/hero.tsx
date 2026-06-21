@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, Variants } from "framer-motion";
 import { ArrowUpRight, Code, Layout, Database } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
+import * as THREE from "three";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -14,16 +16,152 @@ export const Hero = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-  // Spotlight effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // Spotlight effect with elastic/spring motion
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  // Spring configuration for immediate response and elastic deceleration
+  const springConfig = { damping: 25, stiffness: 150, mass: 0.2 };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      const rect = containerRef.current?.getBoundingClientRect();
+      if (rect) {
+        mouseX.set(e.clientX - rect.left);
+        mouseY.set(e.clientY - rect.top);
+      } else {
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+      }
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Combine smooth coordinates into dynamic CSS radial gradient
+  const spotlightBg = useTransform(
+    [smoothMouseX, smoothMouseY],
+    ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,255,255,0.06), transparent 40%)`
+  );
+
+  // 3D Canvas Background Sphere
+  useEffect(() => {
+    const mountNode = mountRef.current;
+    if (!mountNode) return;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    mountNode.appendChild(renderer.domElement);
+
+    // Create a highly tessellated sphere
+    const geometry = new THREE.IcosahedronGeometry(2, 32);
+
+    // Store original positions for animation
+    const positionAttribute = geometry.getAttribute("position");
+    const vertex = new THREE.Vector3();
+    const originalPositions: THREE.Vector3[] = [];
+    for (let i = 0; i < positionAttribute.count; i++) {
+      vertex.fromBufferAttribute(positionAttribute, i);
+      originalPositions.push(vertex.clone());
+    }
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x94a3b8, // Slate 400
+      wireframe: true,
+      transparent: true,
+      opacity: 0.15,
+    });
+
+    const sphere = new THREE.Mesh(geometry, material);
+    scene.add(sphere);
+
+    camera.position.z = 5;
+    camera.position.x = 0;
+    camera.position.y = 0;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const onDocumentMouseMove = (event: MouseEvent) => {
+      const windowHalfX = window.innerWidth / 2;
+      const windowHalfY = window.innerHeight / 2;
+      mouseX = (event.clientX - windowHalfX) * 0.001;
+      mouseY = (event.clientY - windowHalfY) * 0.001;
+    };
+
+    document.addEventListener("mousemove", onDocumentMouseMove);
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        if (width > 0 && height > 0) {
+          renderer.setSize(width, height);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+        }
+      }
+    });
+    resizeObserver.observe(mountNode);
+
+    const clock = new THREE.Clock();
+    let animationFrameId: number;
+
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      targetX = mouseX * 0.5;
+      targetY = mouseY * 0.5;
+
+      sphere.rotation.y += 0.002;
+      sphere.rotation.x += 0.001;
+
+      // Mouse interaction parallax
+      sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
+      sphere.rotation.y += 0.05 * (targetX - sphere.rotation.y);
+
+      // Morph geometry
+      const posAttr = geometry.getAttribute("position");
+      for (let i = 0; i < posAttr.count; i++) {
+        vertex.copy(originalPositions[i]);
+
+        // Complex noise-like displacement using sine waves
+        const noise =
+          Math.sin(vertex.x * 2 + elapsedTime) *
+          Math.cos(vertex.y * 2 + elapsedTime) *
+          Math.sin(vertex.z * 2 + elapsedTime) *
+          0.15;
+
+        vertex.multiplyScalar(1 + noise);
+        posAttr.setXYZ(i, vertex.x, vertex.y, vertex.z);
+      }
+      posAttr.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      document.removeEventListener("mousemove", onDocumentMouseMove);
+      resizeObserver.disconnect();
+      if (mountNode && renderer.domElement) {
+        mountNode.removeChild(renderer.domElement);
+      }
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+    };
   }, []);
 
   const containerVariants: Variants = {
@@ -65,7 +203,7 @@ export const Hero = () => {
         className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-500"
         animate={{ opacity: isHovering ? 1 : 0 }}
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,0.06), transparent 40%)`,
+          background: spotlightBg,
         }}
       />
 
@@ -80,45 +218,52 @@ export const Hero = () => {
         animate="visible"
         className="z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center"
       >
-        {/* Left Column: Text */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left pt-20 lg:pt-0">
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <span className="text-sm text-[#E2E8F0] font-medium tracking-wide">Available for new challenges</span>
-          </motion.div>
+        {/* Left Column: Text and 3D Canvas Background */}
+        <div className="lg:col-span-7 relative flex flex-col items-start text-left pt-20 lg:pt-0">
+          {/* 3D Canvas Background */}
+          <div
+            ref={mountRef}
+            className="absolute inset-0 z-0 pointer-events-none opacity-80"
+          />
+          <div className="relative z-10 flex flex-col items-start">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-sm text-[#E2E8F0] font-medium tracking-wide">Available for new challenges</span>
+            </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#F8FAFC] leading-[1.1] mb-6">
-            Engineering <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E2E8F0] to-[#64748B] italic pr-4">digital</span> <br />
-            experiences.
-          </motion.h1>
+            <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight text-[#F8FAFC] leading-[1.1] mb-6">
+              Engineering <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E2E8F0] to-[#64748B] italic pr-4">digital</span> <br />
+              experiences.
+            </motion.h1>
 
-          <motion.p variants={itemVariants} className="text-lg md:text-xl text-[#94A3B8] max-w-xl leading-relaxed mb-10 font-light">
-            I build scalable, accessible, and performant web applications using modern architectures. Bringing creative visions to life through precise engineering.
-          </motion.p>
+            <motion.p variants={itemVariants} className="text-lg md:text-xl text-[#94A3B8] max-w-xl leading-relaxed mb-10 font-light">
+              I build scalable, accessible, and performant web applications using modern architectures. Bringing creative visions to life through precise engineering.
+            </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
-            <button
-              onClick={() => {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const lenis = (window as any).lenis;
-                if (lenis) lenis.scrollTo("#projects");
-              }}
-              className="group relative flex items-center gap-4 bg-[#F8FAFC] text-[#090D14] px-8 py-4 rounded-full font-semibold hover:bg-[#E2E8F0] transition-colors w-full sm:w-auto justify-center overflow-hidden"
-            >
-              <span className="relative z-10">View Projects</span>
-              <ArrowUpRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
-            <a
-              href="#contact"
-              className="text-[#E2E8F0] font-medium hover:text-primary transition-colors flex items-center gap-2 px-4 py-4"
-            >
-              Contact Me
-            </a>
-          </motion.div>
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+              <button
+                onClick={() => {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const lenis = (window as any).lenis;
+                  if (lenis) lenis.scrollTo("#projects");
+                }}
+                className="group relative flex items-center gap-4 bg-[#F8FAFC] text-[#090D14] px-8 py-4 rounded-full font-semibold hover:bg-[#E2E8F0] transition-colors w-full sm:w-auto justify-center overflow-hidden"
+              >
+                <span className="relative z-10">View Projects</span>
+                <ArrowUpRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </button>
+              <a
+                href="#contact"
+                className="text-[#E2E8F0] font-medium hover:text-primary transition-colors flex items-center gap-2 px-4 py-4"
+              >
+                Contact Me
+              </a>
+            </motion.div>
+          </div>
         </div>
 
         {/* Right Column: Floating Glass Cards */}
