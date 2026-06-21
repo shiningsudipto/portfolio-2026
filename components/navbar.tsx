@@ -19,12 +19,12 @@ export const Navbar = () => {
           const lenis = (window as any).lenis;
           if (lenis) lenis.scrollTo(0);
         }}
-        className="text-xl font-bold text-[#F8FAFC] tracking-tighter cursor-pointer group"
+        className="text-2xl tracking-wide font-bold text-[#F8FAFC] tracking-tighter cursor-pointer group"
       >
         <motion.div
           whileHover={{ textShadow: "0px 0px 8px rgba(20, 184, 166, 0.8)" }}
         >
-          Dev<span className="text-primary">Studio</span>
+          Sudipta.
         </motion.div>
       </button>
 
