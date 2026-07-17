@@ -64,24 +64,25 @@ export const About = () => {
           className="w-full md:w-7/12 flex flex-col justify-center space-y-6 text-[#94A3B8] text-lg leading-relaxed"
         >
           <p>
-            Hello! I&apos;m Sudipta Das, a Full Stack Web Developer specializing
-            in architecting scalable and performant web applications. With an
-            educational background in Marketing, I excel in aligning web
-            development and user experience with genuine business objectives.
+            Hello! I&apos;m Sudipta Das, a Full Stack Software Developer with 3+
+            years of experience specializing in the MERN and PERN stacks to
+            build high-performance, scalable SaaS platforms and enterprise
+            applications.
           </p>
 
           <p>
-            With expertise in the MERN stack alongside tools like Next.js,
-            TypeScript, and Prisma ORM, I focus on solving complex challenges
-            and delivering clean, maintainable code. My passion lies in learning
-            new technologies to stay ahead of industry trends and applying them
-            to build efficient systems.
+            I seamlessly bridge the gap between clean architecture and
+            business-centric objectives — leveraging a unique background in
+            Marketing alongside professional UI/UX design capabilities to
+            deliver premium digital experiences that convert and scale.
           </p>
 
           <p>
-            Beyond core development, I bring skills in Graphic Design, Adobe
-            Photoshop, Figma, and SEO, allowing me to approach web applications
-            with a well-rounded creative and technical perspective.
+            Beyond engineering, I bring professional design skills with Figma
+            and Adobe Photoshop, deep knowledge of Technical SEO and Speed
+            Optimization, and hands-on experience with system design and
+            DevOps — giving me a well-rounded perspective on what makes a
+            great web product.
           </p>
 
           <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">

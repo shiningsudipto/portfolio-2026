@@ -13,7 +13,7 @@ interface Project {
   tags: string[];
   stats: Record<string, string>;
   links: {
-    live: string;
+    live?: string;
     github?: string;
     npm?: string;
   };
@@ -21,13 +21,37 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 4,
+    title: "Alex Booking V2 (Counselling & Scheduling Platform)",
+    description:
+      "Built a highly dynamic, multi-step appointment booking platform featuring granular counselor selection and timezone-aware scheduling. Developed secure booking APIs and real-time availability sync algorithms to eliminate scheduling conflicts and streamline platform data flow. Integrated Stripe payment workflows to manage secure client transactions and automated post-booking receipts.",
+    image: "/projects/alex-booking-mockup.png",
+    tags: [
+      "Next.js",
+      "Redux Toolkit",
+      "Shadcn UI",
+      "Node.js",
+      "Prisma",
+      "PostgreSQL",
+      "Stripe",
+    ],
+    stats: { Role: "Lead Dev", Type: "SaaS", Tech: "Next.js" },
+    links: {},
+  },
+  {
     id: 1,
     title: "Jayga (A Warehouse Management System)",
     description:
-      "Developed a full-featured Warehouse Management System (WMS) as a solo web developer, architecting both admin and client portals. Integrated PayStation, email verification, and automated PDF generation while building complex modules for grid-based inventory and delivery tracking.",
+      "Served as the solo web developer for a full-featured Warehouse Management System (WMS), architecting both admin and client portals. Built advanced grid-based inventory tracking, real-time delivery tracking, and automated PDF invoice generation modules, integrated with PayStation payment processing.",
     image: "/projects/jayga-s-m-l.png",
-    tags: ["React JS", "Redux", "Tanstack Table", "Formik", "TailwindCSS"],
-    stats: { Role: "Solo Dev", Type: "WMS", Tech: "React.js" },
+    tags: [
+      "Next.js",
+      "Redux Toolkit",
+      "TanStack Table",
+      "Formik",
+      "TailwindCSS",
+    ],
+    stats: { Role: "Solo Dev", Type: "WMS", Tech: "Next.js" },
     links: {
       live: "https://jayga.io",
     },
@@ -60,13 +84,19 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  
+
   // The image will translate from -15% to 15% as the user scrolls past
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
@@ -76,16 +106,22 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
-      transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
+      transition={{
+        type: "spring",
+        damping: 20,
+        stiffness: 80,
+        delay: index * 0.1,
+      }}
       className={`flex flex-col ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 lg:gap-12 items-center`}
     >
       {/* Image Side */}
       <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5">
-        <motion.div style={{ y }} className="absolute -inset-y-1/4 inset-x-0 w-full">
+        <motion.div style={{ y }} className="">
           <Image
             src={project.image}
             alt={project.title}
-            fill
+            width={500}
+            height={500}
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </motion.div>
@@ -128,15 +164,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-6 border-t border-white/10">
-          <a
-            href={project.links.live}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 text-[#F8FAFC] font-semibold hover:text-primary transition-colors group"
-          >
-            Live Demo
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
+          {project.links.live && (
+            <a
+              href={project.links.live}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-[#F8FAFC] font-semibold hover:text-primary transition-colors group"
+            >
+              Live Demo
+              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </a>
+          )}
           {project?.links?.github && (
             <a
               href={project.links.github}

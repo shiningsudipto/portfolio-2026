@@ -122,8 +122,12 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #090D14;
+  }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: #090D14;
   }
 }
 @keyframes shimmer {

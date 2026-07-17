@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 const experiences = [
   {
     id: 2,
-    role: "Full Stack Engineer",
+    role: "Full Stack Software Engineer",
     company: "StrategyByte",
     dates: "Sept 2025 - Present",
     impacts: [
-      "Leading the frontend development team to architect highly interactive and performance-optimized web architectures.",
-      "Developing end-to-end full-stack applications, integrating AI capabilities to enhance user experience and core functionality.",
-      "Orchestrating server deployments and configurations using NGINX on VPS, while managing complex data schemas across PostgreSQL and MongoDB.",
+      "Lead the frontend development team to architect highly interactive, performance-optimized web architectures and fluid digital interfaces.",
+      "Develop end-to-end full-stack applications, implementing automated workflows like dynamic sitemap generation, complex scheduling systems, and AI-driven features.",
+      "Orchestrate secure, scalable production server deployments and configurations using Nginx on VPS, managing complex relational and non-relational data schemas across PostgreSQL and MongoDB.",
+      "Streamline user conversion funnels by engineering secure payment gateway workflows, third-party authentication, and multi-step modal checkouts.",
     ],
     stack: [
       "Next.js",
@@ -31,15 +32,17 @@ const experiences = [
     company: "Jayga",
     dates: "Mar 2024 - Sept 2025",
     impacts: [
-      "Serving as the sole developer responsible for building user interfaces and implementing business logic.",
-      "Developing a warehouse service platform offering storage solutions and inventory management based on storage grids.",
-      "Managing end-to-end frontend architecture to ensure scalable and efficient state management.",
+      "Served as the solo web developer responsible for building user interfaces, business logic, and client/admin portals for a full-featured Warehouse Management System (WMS).",
+      "Developed a scalable inventory service platform featuring advanced grid-based asset tracking, real-time delivery tracking, and automated PDF invoice generation modules.",
+      "Managed end-to-end frontend architecture with Next.js, Redux Toolkit, and TanStack Table to ensure seamless state management, fast page load speeds, and robust caching.",
     ],
     stack: [
-      "React.js",
       "Next.js",
-      "Server Actions",
-      "State Management(Redux Toolkit)",
+      "Redux Toolkit",
+      "TanStack Table",
+      "TanStack Query",
+      "Formik",
+      "TailwindCSS",
       "UI/UX",
     ],
   },
