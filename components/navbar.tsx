@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { resume } from "@/lib/constants";
 
 const navItems = [
   { name: "Experience", href: "#experience" },
@@ -46,10 +47,15 @@ export const Navbar = () => {
         ))}
       </ul>
 
-      <button className="group relative px-6 py-2 rounded-full border border-primary text-primary font-medium text-sm overflow-hidden transition-colors duration-300 hover:text-[#fff] cursor-pointer">
+      <a
+        href={resume}
+        target="_blank"
+        rel="noreferrer"
+        className="group relative px-6 py-2 rounded-full border border-primary text-primary font-medium text-sm overflow-hidden transition-colors duration-300 hover:text-[#fff] cursor-pointer"
+      >
         <span className="absolute inset-0 bg-primary translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out z-0" />
         <span className="relative z-10">View Resume</span>
-      </button>
+      </a>
     </nav>
   );
 };

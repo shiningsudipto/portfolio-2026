@@ -1,11 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 
-interface BlogPost {
-  id: number;
+export interface BlogPost {
+  id: number | string;
   title: string;
   excerpt: string;
   date: string;
@@ -15,34 +16,68 @@ interface BlogPost {
   cover: string;
 }
 
-const blogPosts: BlogPost[] = [
+const fallbackBlogPosts: BlogPost[] = [
   {
     id: 1,
-    title:
-      "React Customizable Dropdown: The Complete Guide to Building Better Forms in React",
+    title: "Image Optimization Tactics: The Practical Guide to Shrinking LCP",
     excerpt:
-      "A deep dive into building highly customizable, accessible, and performant dropdowns in React. Learn how to handle complex form states with ease.",
-    date: "Feb 25, 2026",
-    readTime: "8 min read",
-    link: "https://medium.com/@shiningsudiptoo/react-customizable-dropdown-the-complete-guide-to-building-better-forms-in-react-c03953bdba41",
-    tags: ["React", "Forms", "UX"],
+      "Learn practical techniques to optimize images, convert formats to WebP/AVIF, set proper fetch priorities, and dramatically reduce LCP times.",
+    date: "Feb 28, 2026",
+    readTime: "6 min read",
+    link: "https://shiningsudiptoo.medium.com/image-optimization-tactics-the-practical-guide-to-shrinking-lcp-f11c0bc8fffd",
+    tags: ["Lcp", "Web Optimization", "React"],
     cover: "/blogs/react-dropdown.png",
   },
   {
     id: 2,
     title:
+      "React Customizable Dropdown: The Complete Guide to Building Better Forms in React",
+    excerpt:
+      "A deep dive into building highly customizable, accessible, and performant dropdowns in React. Learn how to handle complex form states with ease.",
+    date: "Jan 29, 2026",
+    readTime: "8 min read",
+    link: "https://shiningsudiptoo.medium.com/react-customizable-dropdown-the-complete-guide-to-building-better-forms-in-react-c03953bdba41",
+    tags: ["React", "Forms", "UX"],
+    cover: "/blogs/react-dropdown.png",
+  },
+  {
+    id: 3,
+    title:
       "Complete SEO Guide for Next.js: Make Your Website Search Engine Friendly",
     excerpt:
       "Unlock the full potential of Next.js with advanced SEO strategies. From dynamic metadata to optimized core web vitals, this guide covers it all.",
-    date: "Feb 26, 2026",
+    date: "Nov 28, 2025",
     readTime: "12 min read",
-    link: "https://medium.com/@shiningsudiptoo/complete-seo-guide-for-next-js-make-your-website-search-engine-friendly-967b8c34e7fd",
+    link: "https://shiningsudiptoo.medium.com/complete-seo-guide-for-next-js-make-your-website-search-engine-friendly-967b8c34e7fd",
     tags: ["SEO", "Next.js", "Web Performance"],
     cover: "/blogs/nextjs-seo.png",
   },
 ];
 
 export const Blog = () => {
+  const [posts, setPosts] = useState<BlogPost[]>(fallbackBlogPosts);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const res = await fetch("/api/medium");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.posts && data.posts.length > 0) {
+            setPosts(data.posts);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch Medium posts:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
   return (
     <section
       id="blog"
@@ -74,29 +109,48 @@ export const Blog = () => {
         </a>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        {blogPosts.map((post, index) => (
+      <div
+        className={`grid grid-cols-1 ${
+          posts.length > 2
+            ? "md:grid-cols-2 lg:grid-cols-3 max-w-6xl"
+            : "md:grid-cols-2 max-w-4xl"
+        } gap-8 mx-auto`}
+      >
+        {posts.map((post, index) => (
           <motion.a
             href={post.link}
             target="_blank"
             rel="noreferrer"
-            key={post.id}
+            key={post.id ?? index}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-10%" }}
-            transition={{ type: "spring", damping: 20, stiffness: 80, delay: index * 0.1 }}
+            transition={{
+              type: "spring",
+              damping: 20,
+              stiffness: 80,
+              delay: index * 0.1,
+            }}
             className="group flex flex-col bg-white/2 border border-white/5 rounded-2xl p-8 hover:bg-white/5 hover:border-secondary/30 transition-all duration-500 relative overflow-hidden h-[400px] justify-end"
           >
             {/* Background Cover Image on Hover */}
-            <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out scale-105 group-hover:scale-100">
-              <Image
-                src={post.cover}
-                alt={post.title}
-                fill
-                className="object-cover brightness-[0.3]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-transparent" />
-            </div>
+            {post.cover && (
+              <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out scale-105 group-hover:scale-100">
+                <Image
+                  src={post.cover}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover brightness-[0.3]"
+                  onError={(e) => {
+                    // Fallback to local image if Medium remote image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.srcset = "/blogs/react-dropdown.png";
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/80 to-transparent" />
+              </div>
+            )}
 
             <div className="relative z-10">
               <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 duration-300">
@@ -114,11 +168,11 @@ export const Blog = () => {
                 ))}
               </div>
 
-              <h3 className="text-2xl font-bold text-[#F8FAFC] mb-4 group-hover:text-secondary transition-colors line-clamp-2">
+              <h3 className="text-xl md:text-2xl font-bold text-[#F8FAFC] mb-4 group-hover:text-secondary transition-colors line-clamp-2">
                 {post.title}
               </h3>
 
-              <p className="text-[#94A3B8] text-base leading-relaxed mb-6 line-clamp-3 group-hover:text-[#CBD5E1] transition-colors">
+              <p className="text-[#94A3B8] text-sm md:text-base leading-relaxed mb-6 line-clamp-3 group-hover:text-[#CBD5E1] transition-colors">
                 {post.excerpt}
               </p>
 

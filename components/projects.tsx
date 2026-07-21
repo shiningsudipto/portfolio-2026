@@ -25,7 +25,7 @@ const projects: Project[] = [
     title: "Alex Booking V2 (Counselling & Scheduling Platform)",
     description:
       "Built a highly dynamic, multi-step appointment booking platform featuring granular counselor selection and timezone-aware scheduling. Developed secure booking APIs and real-time availability sync algorithms to eliminate scheduling conflicts and streamline platform data flow. Integrated Stripe payment workflows to manage secure client transactions and automated post-booking receipts.",
-    image: "/projects/alex-booking-mockup.png",
+    image: "/projects/alex-device-mockup.png",
     tags: [
       "Next.js",
       "Redux Toolkit",
@@ -36,7 +36,9 @@ const projects: Project[] = [
       "Stripe",
     ],
     stats: { Role: "Lead Dev", Type: "SaaS", Tech: "Next.js" },
-    links: {},
+    links: {
+      live: "https://www.alexrodriguez.com.au",
+    },
   },
   {
     id: 1,
@@ -115,13 +117,13 @@ const ProjectCard = ({
       className={`flex flex-col ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 lg:gap-12 items-center`}
     >
       {/* Image Side */}
-      <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-video border border-white/10 bg-white/5">
-        <motion.div style={{ y }} className="">
+      <div className="w-full lg:w-1/2 relative group rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 bg-white/5">
+        <motion.div style={{ y }} className="w-full h-full relative">
           <Image
             src={project.image}
             alt={project.title}
-            width={500}
-            height={500}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </motion.div>

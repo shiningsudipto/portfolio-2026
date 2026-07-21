@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring, Variants } 
 import { ArrowUpRight, Code, Layout, Database } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
+import { resume } from "@/lib/constants";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -245,17 +246,15 @@ export const Hero = () => {
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
-              <button
-                onClick={() => {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const lenis = (window as any).lenis;
-                  if (lenis) lenis.scrollTo("#projects");
-                }}
+              <a
+                href={resume}
+                target="_blank"
+                rel="noreferrer"
                 className="group relative flex items-center gap-4 bg-[#F8FAFC] text-[#090D14] px-8 py-4 rounded-full font-semibold hover:bg-[#E2E8F0] transition-colors w-full sm:w-auto justify-center overflow-hidden"
               >
-                <span className="relative z-10">View Projects</span>
+                <span className="relative z-10">View Resume</span>
                 <ArrowUpRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
+              </a>
               <a
                 href="#contact"
                 className="text-[#E2E8F0] font-medium hover:text-primary transition-colors flex items-center gap-2 px-4 py-4"
